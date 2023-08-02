@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $DataObat = Obat::orderBy('tgl_exp', 'asc')->paginate(15);
+        $DataObat = Obat::orderBy('tgl_exp', 'asc')->get();
         $JumlahObat = Obat::all()->count();
         $JumlahObatSudahExpired = Obat::where('tgl_exp', '<=', now())->count();
         $JumlahObatBelumExpired = Obat::where('tgl_exp', '>=', now())->count();
